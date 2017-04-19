@@ -28,10 +28,10 @@ public class HelloService {
 	@RequestMapping(value = "/hello", method = RequestMethod.GET, produces = {"text/plain"})
 	@ResponseBody
 	public ResponseEntity<?> hello(final HttpServletRequest request) {
-		final Exchange exchange = ExchangeBuilder.anExchange(camelContext).build();
-		final Exchange response = producer.send(ServiceConstants.HELLO_SERVICE_ENDPOINT, exchange);
-		final String body = response.getOut().getBody(String.class);
-		final int responseCode = response.getOut().getHeader(Exchange.HTTP_RESPONSE_CODE, Integer.class).intValue();
+		final Exchange requestExchange = ExchangeBuilder.anExchange(camelContext).build();
+		final Exchange responseExchange = producer.send(ServiceConstants.HELLO_SERVICE_ENDPOINT, requestExchange);
+		final String body = responseExchange.getOut().getBody(String.class);
+		final int responseCode = responseExchange.getOut().getHeader(Exchange.HTTP_RESPONSE_CODE, Integer.class).intValue();
 		return ResponseEntity.status(responseCode).body(body);
 	}
 }
