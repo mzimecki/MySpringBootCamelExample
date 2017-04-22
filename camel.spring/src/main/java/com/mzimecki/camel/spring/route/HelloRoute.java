@@ -12,7 +12,7 @@ public class HelloRoute extends RouteBuilder {
 	@Override
 	public void configure() throws Exception {
 		from(ServiceConstants.HELLO_SERVICE_ENDPOINT)
-			.id("HelloRoute")
+			.id(ServiceConstants.HELLO_ROUTE_ID)
 			.log("I'm in the Camel Route!")
 			.process(new HelloProcessor());
 	}

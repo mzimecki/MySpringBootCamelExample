@@ -8,7 +8,8 @@ public class HelloProcessor implements Processor {
 
 	@Override
 	public void process(Exchange exchange) throws Exception {
-		exchange.getOut().setBody("Hello from camel processed message!");
+		final String body = exchange.getIn().getBody(String.class);
+		exchange.getOut().setBody("Hello from camel processed message! Received payload: " + body);
 		exchange.getOut().setHeader(Exchange.HTTP_RESPONSE_CODE, HttpStatus.SC_ACCEPTED);
 	}
 
