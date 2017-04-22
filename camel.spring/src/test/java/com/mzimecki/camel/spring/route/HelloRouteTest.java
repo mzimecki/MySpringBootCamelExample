@@ -17,20 +17,18 @@ public class HelloRouteTest extends CamelSpringTestSupport {
 	@Override
 	protected AbstractApplicationContext createApplicationContext() {
 		AnnotationConfigApplicationContext ctx = new AnnotationConfigApplicationContext();
-		ctx.register(HelloRoute.class);
+		ctx.scan("com.mzimecki.camel.spring");
 		ctx.refresh();
 		return ctx;
 	}
 	
 	@Test
 	public void should_hello_route_be_running() throws Exception {
-		context().addRoutes(applicationContext.getBean(HelloRoute.class));
 		assertTrue(context().getRouteStatus(ServiceConstants.HELLO_ROUTE_ID).isStarted());
 	}
 	
 	@Test
 	public void should_hello_route_process_the_message() throws Exception {
-		context().addRoutes(applicationContext.getBean(HelloRoute.class));
 		Endpoint endpoint = getMandatoryEndpoint(ServiceConstants.HELLO_SERVICE_ENDPOINT);
 		Exchange requestExchange = ExchangeBuilder.anExchange(context()).withBody(TEST_MESSAGE_PAYLOAD).build();
 		Exchange resultExchange = context().createProducerTemplate().send(endpoint, requestExchange);
