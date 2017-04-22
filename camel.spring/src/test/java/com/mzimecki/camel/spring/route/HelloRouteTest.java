@@ -4,15 +4,12 @@ import org.apache.camel.Endpoint;
 import org.apache.camel.Exchange;
 import org.apache.camel.builder.ExchangeBuilder;
 import org.apache.camel.test.spring.CamelSpringTestSupport;
-import org.apache.camel.test.spring.CamelTestContextBootstrapper;
 import org.junit.Test;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.context.support.AbstractApplicationContext;
-import org.springframework.test.context.BootstrapWith;
 
 import com.mzimecki.camel.spring.constants.ServiceConstants;
 
-@BootstrapWith(CamelTestContextBootstrapper.class)
 public class HelloRouteTest extends CamelSpringTestSupport {
 	
 	private static final String TEST_MESSAGE_PAYLOAD = "my message";
