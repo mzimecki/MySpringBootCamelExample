@@ -38,5 +38,4 @@ public class HelloRouteTest extends CamelSpringTestSupport {
 		assertTrue(resultBody.contains(TEST_MESSAGE_PAYLOAD));
 	}
 
-
 }
