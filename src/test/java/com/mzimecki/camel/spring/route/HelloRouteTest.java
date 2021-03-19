@@ -1,10 +1,12 @@
 package com.mzimecki.camel.spring.route;
 
+import static org.junit.jupiter.api.Assertions.assertTrue;
+
 import org.apache.camel.Endpoint;
 import org.apache.camel.Exchange;
 import org.apache.camel.builder.ExchangeBuilder;
-import org.apache.camel.test.spring.CamelSpringTestSupport;
-import org.junit.Test;
+import org.apache.camel.test.spring.junit5.CamelSpringTestSupport;
+import org.junit.jupiter.api.Test;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.context.support.AbstractApplicationContext;
 
@@ -24,7 +26,7 @@ public class HelloRouteTest extends CamelSpringTestSupport {
 	
 	@Test
 	public void should_hello_route_be_running() throws Exception {
-		assertTrue(context().getRouteStatus(ServiceConstants.HELLO_ROUTE_ID).isStarted());
+		assertTrue(context().getRouteController().getRouteStatus(ServiceConstants.HELLO_ROUTE_ID).isStarted());
 	}
 	
 	@Test
