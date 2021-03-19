@@ -6,7 +6,6 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.ComponentScan;
 
 @SpringBootApplication
-@EnableAutoConfiguration
 @ComponentScan(value = "com.mzimecki.camel.spring")
 public class ServiceLauncher {
 	
