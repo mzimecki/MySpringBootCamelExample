@@ -7,10 +7,10 @@ import org.apache.commons.httpclient.HttpStatus;
 public class HelloProcessor implements Processor {
 
 	@Override
-	public void process(Exchange exchange) throws Exception {
+	public void process(Exchange exchange) {
 		final String body = exchange.getIn().getBody(String.class);
-		exchange.getOut().setBody("Hello from camel processed message! Received payload: " + body);
-		exchange.getOut().setHeader(Exchange.HTTP_RESPONSE_CODE, HttpStatus.SC_ACCEPTED);
+		exchange.getMessage().setBody("Hello from camel processed message! Received payload: " + body);
+		exchange.getMessage().setHeader(Exchange.HTTP_RESPONSE_CODE, HttpStatus.SC_ACCEPTED);
 	}
 
 }

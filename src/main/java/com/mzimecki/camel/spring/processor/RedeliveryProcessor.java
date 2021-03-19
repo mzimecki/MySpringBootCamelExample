@@ -10,13 +10,13 @@ public class RedeliveryProcessor implements Processor {
 	private static final int MAX_REDELIVERIES = 5;
 	
 	@Override
-	public void process(Exchange exchange) throws Exception {
-		final int redeliveryCount = exchange.getIn().getHeader(ServiceConstants.REDELIVERY_COUNT_HEADER_NAME, Integer.class).intValue();
+	public void process(Exchange exchange) {
+		final int redeliveryCount = exchange.getIn().getHeader(ServiceConstants.REDELIVERY_COUNT_HEADER_NAME, Integer.class);
 		
 		if (redeliveryCount <= MAX_REDELIVERIES) {
 			exchange.getIn().setHeader(ServiceConstants.REDELIVERY_COUNT_HEADER_NAME, redeliveryCount + 1);
 		} else {
-			exchange.setProperty(Exchange.ROUTE_STOP, Boolean.TRUE);
+			exchange.setRouteStop(true);
 		}
 	}
 
