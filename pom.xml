@@ -20,7 +20,7 @@
 	<properties>
 		<junit.jupiter.version>5.7.0</junit.jupiter.version>
 		<junit.platform.version>1.5.2</junit.platform.version>
-		<camel.version>3.7.1</camel.version>
+		<camel.version>3.21.4</camel.version>
 		<spring.boot.starter.version>2.5.12</spring.boot.starter.version>
 		<jakarta-xml.version>2.3.2</jakarta-xml.version>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
